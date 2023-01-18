@@ -20,6 +20,7 @@ cardano-cli transaction hash-script-data --script-data-value <SOME NUMBER>
 
 Set Variables
 
+```
 SENDER
 SENDERKEY
 TXIN1=
@@ -37,6 +38,7 @@ CONTRACTADDR=
 DATUMHASH=
 ASSET=
 NUM_TOKENS= how many tokens do you want to lock?
+```
 
 Build a Locking Transaction:
 ```
@@ -44,11 +46,8 @@ cardano-cli transaction build \
 --babbage-era \
 --tx-in $TXIN1 \
 --tx-in $TXIN2 \
-<<<<<<< Updated upstream
 --tx-out $CONTRACTADDR+"1500000 + $NUM_TOKENS $ASSET" \
-=======
 --tx-out $CONTRACTADDR+"2000000 + 500 $ASSET" \
->>>>>>> Stashed changes
 --tx-out-datum-hash $DATUMHASH \
 --change-address $SENDER \
 --protocol-params-file protocol.json \
@@ -72,7 +71,7 @@ cardano-cli transaction submit \
 Create a `redeemer.json` file with the following contents:
 {"constructor":0,"fields":[{"bytes":"<YOUR PUBKEYHASH HERE"}]}
 
-4. Build an Unlocking Transaction:
+## Build an Unlocking Transaction:
 
 #### Set Variables
 ```
@@ -118,5 +117,4 @@ cardano-cli transaction sign \
 cardano-cli transaction submit \
 --tx-file unlock.signed \
 --testnet-magic 1
-
-
+```
